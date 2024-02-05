@@ -40,14 +40,18 @@ namespace PNetRunner.Data
                     {
                         //Arguments = $"-S localhost:8000 -f {Path.Combine(contentDirectory)}",
 
-                        Arguments = $"-S localhost:8000 -f {Path.Combine(contentDirectory, "index.php")}",
                         FileName = $"{_phpSettings.ServerPath}",
+                        Arguments = $"-S localhost:8000",
+                        WorkingDirectory = contentDirectory,
                         RedirectStandardOutput = true,
+                        RedirectStandardError = true,
                         //RedirectStandardInput = true,
                     }
                 };
 
                 process.OutputDataReceived += (sender, args) => _logger.LogInformation(args.Data);
+                process.ErrorDataReceived += (sender, args) => _logger.LogError(args.Data);
+
                 _processes.Add(process);
                 process.Start();
             }

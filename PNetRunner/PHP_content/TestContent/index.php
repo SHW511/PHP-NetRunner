@@ -9,3 +9,8 @@ if (php_sapi_name() == 'cli-server') {
 /* go on with normal index.php operations */
 ?>
 <h1>Hello World</h1>
+
+<?php
+phpinfo();	
+
+?>
