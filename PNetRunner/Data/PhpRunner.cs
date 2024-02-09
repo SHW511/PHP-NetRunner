@@ -18,14 +18,15 @@ namespace PNetRunner.Data
             _phpSettings = options.Value;
             _logger = logger;
             _lifetimeService = hostApplicationLifetime;
+            _lifetimeService.ApplicationStopping.Register(ShutdownListeners);
+        }
 
-            _lifetimeService.ApplicationStopping.Register(() =>
+        private void ShutdownListeners()
+        {
+            foreach (var process in _processes)
             {
-                foreach (var process in _processes)
-                {
-                    process.Kill();
-                }
-            });
+                process.Kill();
+            }
         }
 
         public void MapPhpContainers()
@@ -38,8 +39,6 @@ namespace PNetRunner.Data
                 {
                     StartInfo = new ProcessStartInfo
                     {
-                        //Arguments = $"-S localhost:8000 -f {Path.Combine(contentDirectory)}",
-
                         FileName = $"{_phpSettings.ServerPath}",
                         Arguments = $"-S localhost:8000",
                         WorkingDirectory = contentDirectory,
