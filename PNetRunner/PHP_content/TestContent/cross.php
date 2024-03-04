@@ -14,10 +14,8 @@ setcookie("super_secret_token", "123456789");
     //print "Information: " . htmlspecialchars(urldecode(($_SERVER["REQUEST_URI"])), ENT_QUOTES, "UTF-8");
     ?>
 
-    <!-- <script>
-        var token = document.cookie;
-        alert("Token: " + token);
-    </script> -->
+    <!-- <script>alert("TEST");</script> The result is: Not found: / (but with JavaScript code <script>alert("TEST");</script> -->
+    <!-- <script>alert(document.cookie);</script> -->
 
 </body>
 
