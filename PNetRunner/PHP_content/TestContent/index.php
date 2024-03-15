@@ -8,9 +8,19 @@ if (php_sapi_name() == 'cli-server') {
 }
 /* go on with normal index.php operations */
 ?>
-<h1>Hello World</h1>
+<h1>Hello World!</h1>
 
 <?php
+
+//print_r($_ENV);
+
+//print_r(ini_get_all());
+
+$link = mysqli_connect("127.0.0.1", "root", "Erazer511", "sys");
+if($link === false){
+	die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
 phpinfo();	
 
 ?>

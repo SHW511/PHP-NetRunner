@@ -19,7 +19,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="PHP_content\PhpMyAdmin\" />
+    <Compile Remove="PHP_content\PhpMyAdmin\**" />
+    <Content Remove="PHP_content\PhpMyAdmin\**" />
+    <EmbeddedResource Remove="PHP_content\PhpMyAdmin\**" />
+    <None Remove="PHP_content\PhpMyAdmin\**" />
   </ItemGroup>
 
 </Project>
