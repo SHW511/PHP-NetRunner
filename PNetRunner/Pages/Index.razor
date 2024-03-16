@@ -12,13 +12,13 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var proc in PhpRunner.Processes)
+        @foreach (var proc in Processes)
         {
             <tr>
-                <td>@proc.Id</td>
-                <td>@proc.ProcessName</td>
+                <td>@proc.Item2.Id</td>
+                <td>@proc.Item1</td>
                 <td>
-                    <a href="http://@(@proc.StartInfo.Arguments.Replace("-S ", string.Empty))">@proc.StartInfo.Arguments</a>
+                    <a href="http://@(@proc.Item2.StartInfo.Arguments.Replace("-S ", string.Empty))">@proc.Item2.StartInfo.Arguments</a>
                 </td>
             </tr>
         }
