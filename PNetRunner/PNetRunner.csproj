@@ -25,4 +25,11 @@
     <None Remove="PHP_content\PhpMyAdmin\**" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="PHP_content\T2\cross.php" />
+    <None Remove="PHP_content\T2\index.php" />
+    <None Remove="PHP_content\T2\index_xss.php" />
+    <None Remove="PHP_content\T2\test.php" />
+  </ItemGroup>
+
 </Project>

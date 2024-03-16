@@ -14,6 +14,7 @@ namespace PNetRunner
             builder.Services.AddServerSideBlazor();
             builder.Services.AddOptions<PhpSettings>().Bind(builder.Configuration.GetSection("PhpSettings"));
             builder.Services.AddSingleton<PhpRunner>();
+            builder.Services.AddSingleton<PortAssigner>();
             builder.Services.AddLogging();
 
             var app = builder.Build();
@@ -35,7 +36,7 @@ namespace PNetRunner
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
 
-            app.Services.GetRequiredService<PhpRunner>().MapPhpContainers();
+            _ = app.Services.GetRequiredService<PhpRunner>().MapPhpContainersAsync();
 
             app.Run();
         }

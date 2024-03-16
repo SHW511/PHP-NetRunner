@@ -1,9 +1,25 @@
-﻿@page "/"
+﻿@inherits IndexComponent
+@page "/"
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Designation</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var proc in PhpRunner.Processes)
+        {
+            <tr>
+                <td>@proc.Id</td>
+                <td>@proc.ProcessName</td>
+                <td>@proc.StartInfo.Arguments</td>
+            </tr>
+        }
+    </tbody>
+</table>
