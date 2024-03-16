@@ -13,8 +13,29 @@ namespace PNetRunner.Data
         /// <returns>A unique port number.</returns>
         public async Task<int> GeneratePortNumber()
         {
-
             int portNumber = 8000; // Starting port number
+
+            while (await IsPortInUse(portNumber))
+            {
+                portNumber++;
+            }
+
+            return portNumber;
+        }
+
+        /// <summary>
+        /// Generates a unique port number based on the last port number.
+        /// </summary>
+        /// <param name="lastPort">The last port number used.</param>
+        /// <returns>A unique port number.</returns>
+        public async Task<int> GeneratePortNumber(int lastPort = 0)
+        {
+            if(lastPort == 0)
+            {
+                return await GeneratePortNumber();
+            }
+
+            int portNumber = lastPort + 1;
 
             while (await IsPortInUse(portNumber))
             {

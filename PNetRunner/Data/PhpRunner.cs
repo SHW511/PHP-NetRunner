@@ -62,10 +62,11 @@ namespace PNetRunner.Data
         public async Task<bool> MapPhpContainersAsync()
         {
             var contentDirectories = Directory.EnumerateDirectories(Path.Combine(Directory.GetCurrentDirectory(), "PHP_content")).ToList();
+            List<int> preAssignedPort = new List<int>();
 
             foreach (var contentDirectory in contentDirectories)
             {
-                int port = await _portAssigner.GeneratePortNumber();
+                int port = await _portAssigner.GeneratePortNumber(preAssignedPort.LastOrDefault());
 
                 Process process = new Process()
                 {
@@ -82,6 +83,7 @@ namespace PNetRunner.Data
                 process.OutputDataReceived += (sender, args) => _logger.LogInformation(args.Data);
 
                 _logger.LogInformation($"Starting PHP server on port {port} for directory {contentDirectory}");
+                preAssignedPort.Add(port);
 
                 Processes.Add(process);
                 process.Start();

@@ -36,7 +36,7 @@ namespace PNetRunner
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
 
-            _ = app.Services.GetRequiredService<PhpRunner>().MapPhpContainersAsync();
+            app.Services.GetRequiredService<PhpRunner>().MapPhpContainersAsync().Wait();
 
             app.Run();
         }
