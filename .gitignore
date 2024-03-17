@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PNetRunner/PHP_content/PhpMyAdmin/tmp/twig
