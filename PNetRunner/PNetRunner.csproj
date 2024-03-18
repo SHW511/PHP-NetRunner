@@ -19,17 +19,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="PHP_content\PhpMyAdmin\**" />
-    <Content Remove="PHP_content\PhpMyAdmin\**" />
-    <EmbeddedResource Remove="PHP_content\PhpMyAdmin\**" />
-    <None Remove="PHP_content\PhpMyAdmin\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="PHP_content\T2\cross.php" />
     <None Remove="PHP_content\T2\index.php" />
     <None Remove="PHP_content\T2\index_xss.php" />
     <None Remove="PHP_content\T2\test.php" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="PHP_content\PhpMyAdmin\vendor\ramsey\collection\bin\" />
+    <Folder Include="PHP_content\PhpMyAdmin\vendor\symfony\dependency-injection\Loader\schema\dic\services\" />
   </ItemGroup>
 
 </Project>
