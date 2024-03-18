@@ -6,13 +6,12 @@ namespace PNetRunner.Data
 {
     public class PhpRunner
     {
+        public List<Process> Processes { get; set; } = new List<Process>();
+        
         private PortAssigner _portAssigner;
         private PhpSettings _phpSettings;
         private ILogger<PhpSettings> _logger;
-
-        public List<Process> Processes { get; set; } = new List<Process>();
-
-        IHostApplicationLifetime _lifetimeService;
+        private IHostApplicationLifetime _lifetimeService;
 
         public PhpRunner(PortAssigner portAssigner, IOptions<PhpSettings> options, ILogger<PhpSettings> logger, IHostApplicationLifetime hostApplicationLifetime)
         {
