@@ -18,7 +18,7 @@
                 <td>@proc.Item2.Id</td>
                 <td>@proc.Item1</td>
                 <td>
-                    <a href="http://@(@proc.Item2.StartInfo.Arguments.Replace("-S ", string.Empty))">@proc.Item2.StartInfo.Arguments</a>
+                    <a href="http://@(@proc.Item2.StartInfo.Arguments.Replace("-S ", string.Empty))">@proc.Item2.StartInfo.Arguments.Replace("-S ", string.Empty)</a>
                 </td>
             </tr>
         }
