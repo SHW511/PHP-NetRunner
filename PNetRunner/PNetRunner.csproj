@@ -12,24 +12,4 @@
     </Content>
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="PHP_content\**">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="PHP_content\PhpMyAdmin\**" />
-    <Content Remove="PHP_content\PhpMyAdmin\**" />
-    <EmbeddedResource Remove="PHP_content\PhpMyAdmin\**" />
-    <None Remove="PHP_content\PhpMyAdmin\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="PHP_content\T2\cross.php" />
-    <None Remove="PHP_content\T2\index.php" />
-    <None Remove="PHP_content\T2\index_xss.php" />
-    <None Remove="PHP_content\T2\test.php" />
-  </ItemGroup>
-
 </Project>
