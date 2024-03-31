@@ -1,5 +1,6 @@
 ﻿@inherits IndexComponent
 @page "/"
+@using PNetRunner.Ext
 
 <PageTitle>Index</PageTitle>
 
@@ -18,7 +19,10 @@
                 <td>@proc.Item2.Id</td>
                 <td>@proc.Item1</td>
                 <td>
-                    <a href="http://@(@proc.Item2.StartInfo.Arguments.Replace("-S ", string.Empty))">@proc.Item2.StartInfo.Arguments</a>
+                    @{
+                        var str = @proc.Item2.StartInfo.Arguments.AsHref(true, "-S", " ");
+                        <a href="@str">@str</a>
+                    }
                 </td>
             </tr>
         }
