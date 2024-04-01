@@ -20,25 +20,22 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '$(solution)'
-
-- task: NuGetCommand@2
-  inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
-- task: VSBuild@1
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:TargetFramework=net8.0 /p:RuntimeIdentifier=win-x86 /p:SelfContained=true /p:WebPublishMethod=FileSystem /p:DeployOnBuild=true /p:PackageAsSingleFile=false /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:restore;rebuild;publish /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SelfContained=true /p:Platform="Any CPU" /p:Configuration=Release /p:RuntimeIdentifier=win-x64' 
+    msbuildVersion: latest
 
-# - task: VSTest@2
-#   inputs:
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output $(Build.ArtifactStagingDirectory) --no-dependencies
+    projects: '**/*.csproj'
+    zipAfterPublish: false
 
 - task: PublishBuildArtifacts@1
   inputs:
