@@ -47,12 +47,9 @@ steps:
 - task: GitHubRelease@1
   inputs:
     gitHubConnection: 'Github Release service connection'
-    repositoryName: 'SHW511/PHP_NetRunner'
-    action: 'create'
+    repositoryName: '$(Build.Repository.Name)'
+    action: 'edit'
     target: '$(Build.SourceVersion)'
-    tagSource: 'userSpecifiedTag'
     tag: 'Release'
-    title: 'PHP NetRunner'
-    releaseNotesSource: 'inline'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
