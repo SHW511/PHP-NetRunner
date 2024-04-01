@@ -12,7 +12,7 @@ pool:
 
 variables:
   solution: '**/*.sln'
-  buildPlatform: 'Any CPU'
+  buildPlatform: 'win-x64'
   buildConfiguration: 'Release'
 
 steps:
@@ -25,7 +25,7 @@ steps:
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:SelfContained=True /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)" '
+    msbuildArgs: '/p:SelfContained=True /p:TargetFrameworks=net8.0 /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)" '
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
