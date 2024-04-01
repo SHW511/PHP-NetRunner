@@ -45,7 +45,7 @@ steps:
     publishLocation: 'Container'
 
 - bash: |
-    git push --prune https://$(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)@github.com/PHP_NetRunner \
+    git push --prune https://$(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)@github.com/SHW511/PHP_NetRunner \
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
