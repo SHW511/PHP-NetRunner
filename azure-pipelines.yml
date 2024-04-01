@@ -43,16 +43,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'PHP NET Runner'
     publishLocation: 'Container'
-    
-- task: GitHubRelease@1
-  inputs:
-    gitHubConnection: 'Github Release service connection'
-    repositoryName: 'SHW511/PHP_NetRunner'
-    action: 'create'
-    target: '$(Build.SourceVersion)'
-    tagSource: 'userSpecifiedTag'
-    tag: 'e1cb5dd2a0db0e00e24ace965871e18513edf107'
-    releaseNotesSource: 'inline'
-    releaseNotesInline: '***NO_CI***'
-    changeLogCompareToRelease: 'lastFullRelease'
-    changeLogType: 'commitBased'
