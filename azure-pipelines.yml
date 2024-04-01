@@ -15,6 +15,7 @@ steps:
     command: 'restore'
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
+  enabled: false
 
 - task: MSBuild@1
   inputs:
@@ -39,9 +40,9 @@ steps:
   enabled: false
 
 
-# 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@
+# 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
 - bash: |
-    MY_PAT=[YourPAT]
+    MY_PAT=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
     B64_PAT=$(printf "%s"":$MY_PAT" | base64)
     git config --global --add http.extraHeader "Authorization: Basic ${B64_PAT}"
     git push --prune https://github.com/SHW511/PHP-NetRunner.git HEAD:master
@@ -53,4 +54,4 @@ steps:
 - task: gitsync@1
   enabled: false
   inputs:
-    GitRepoUrl: 'https://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@github.com/SHW511/PHP-NetRunner.git'
+    GitRepoUrl: 'https://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@github.com/SHW511/PHP-NetRunner.git'
