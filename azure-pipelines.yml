@@ -21,6 +21,7 @@ steps:
     solution: '$(solution)'
     msbuildArguments: '/t:restore;rebuild;publish /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SelfContained=true /p:Platform="Any CPU" /p:Configuration=Release /p:RuntimeIdentifier=win-x64' 
     msbuildVersion: latest
+  enabled: false
 
 - task: DotNetCoreCLI@2
   inputs:
@@ -28,6 +29,7 @@ steps:
     arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output $(Build.ArtifactStagingDirectory) --no-dependencies
     projects: '**/*.csproj'
     zipAfterPublish: false
+  enabled: false
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -39,7 +41,7 @@ steps:
 
 
 - bash: |
-    git push --prune https://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@github.com/SHW511/PHP-NetRunner.git
+    git push --prune https://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@github.com/SHW511/PHP-NetRunner.git HEAD: origin/master
         # +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
