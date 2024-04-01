@@ -45,4 +45,4 @@ steps:
 - task: gitsync@1
   enabled: true
   inputs:
-    GitRepoUrl: 'https://$(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)@github.com/SHW511/PHP_NetRunner.git'
+    GitRepoUrl: 'https://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@github.com/SHW511/PHP_NetRunner.git'
