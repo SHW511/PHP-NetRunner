@@ -39,12 +39,12 @@ steps:
   enabled: false
 
 
-
+# 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@
 - bash: |
     MY_PAT=[YourPAT]
     B64_PAT=$(printf "%s"":$MY_PAT" | base64)
     git config --global --add http.extraHeader "Authorization: Basic ${B64_PAT}"
-    git push --prune https://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@github.com/SHW511/PHP-NetRunner.git HEAD:master
+    git push --prune https://github.com/SHW511/PHP-NetRunner.git HEAD:master
         # +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
