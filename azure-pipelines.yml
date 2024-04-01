@@ -40,9 +40,9 @@ steps:
         +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
   displayName: 'Copy to Github'
   condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-  enabled: true
+  enabled: false
 
 - task: gitsync@1
-  enabled: false
+  enabled: true
   inputs:
     GitRepoUrl: 'https://$(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)@github.com/SHW511/PHP_NetRunner'
