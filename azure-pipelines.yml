@@ -19,6 +19,7 @@ steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
+
   inputs:
     command: 'restore'
     restoreSolution: '**/*.sln'
@@ -42,3 +43,15 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'PHP NET Runner'
     publishLocation: 'Container'
+
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'Github Release service connection'
+    repositoryName: 'SHW511/PHP_NetRunner'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    releaseNotesSource: 'inline'
+    releaseNotesInline: 'Init public release'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
