@@ -48,8 +48,11 @@ steps:
   inputs:
     gitHubConnection: 'Github Release service connection'
     repositoryName: '$(Build.Repository.Name)'
-    action: 'edit'
-    target: '$(Build.SourceVersion)'
+    action: 'create'
+    target: 'e1cb5dd2a0db0e00e24ace965871e18513edf107'
+    tagSource: 'userSpecifiedTag'
     tag: 'Release'
+    title: 'PHP NetRunner'
+    releaseNotesSource: 'inline'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
