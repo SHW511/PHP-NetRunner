@@ -28,26 +28,17 @@ steps:
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
-# - task: VSBuild@1
-#   inputs:
-#     solution: '$(solution)'
-#     # /p:WebPublishMethod=Package
-#     msbuildArgs: '/p:/p:DeployOnBuild=true /p:PackageAsSingleFile=false /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)" '
-#     platform: '$(buildPlatform)'
-#     configuration: '$(buildConfiguration)'
-
 - task: VSBuild@1
   inputs:
-    solution: '**\*.sln'
-    msbuildArgs: 'SelfContained=true PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: 'any cpu'
-    configuration: 'Release'
-    msbuildArchitecture: 'x64' 
-
-- task: VSTest@2
-  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:TargetFramework=net8.0 /p:RuntimeIdentifier=win-x86 /p:SelfContained=true /p:WebPublishMethod=FileSystem /p:DeployOnBuild=true /p:PackageAsSingleFile=false /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+# - task: VSTest@2
+#   inputs:
+#     platform: '$(buildPlatform)'
+#     configuration: '$(buildConfiguration)'
 
 - task: PublishBuildArtifacts@1
   inputs:
