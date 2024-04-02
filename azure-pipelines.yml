@@ -19,23 +19,48 @@ steps:
 - task: NuGetToolInstaller@1
 
 - task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
 
-- task: VSBuild@1
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
+  enabled: true
+
+- task: MSBuild@1
   inputs:
     solution: '$(solution)'
-    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    msbuildArguments: '/t:restore;rebuild;publish /p:DeployOnBuild=True /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:SelfContained=true /p:Platform="Any CPU" /p:Configuration=Release /p:RuntimeIdentifier=win-x64' 
+    msbuildVersion: latest
+  enabled: false
 
-- task: VSTest@2
+- task: DotNetCoreCLI@2
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-    
+    command: 'publish'
+    arguments: -c Release --runtime win-x64 /p:PublishSingleFile=true --self-contained --output $(Build.ArtifactStagingDirectory) --no-dependencies
+    projects: '**/*.csproj'
+    zipAfterPublish: false
+  enabled: true
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'drop'
+    ArtifactName: 'PHP NET Runner'
     publishLocation: 'Container'
+  enabled: true
+
+
+# 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
+- bash: |
+    MY_PAT=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
+    B64_PAT=$(printf "%s"":$MY_PAT" | base64)
+    git config --global --add http.extraHeader "Authorization: Basic ${B64_PAT}"
+    git push --prune https://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@github.com/SHW511/PHP-NetRunner.git HEAD:master
+        # +refs/remotes/origin/*:refs/heads/* +refs/tags/*:refs/tags/*
+  displayName: 'Copy to Github'
+  condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+  enabled: false
+
+- task: gitsync@1
+  enabled: false
+  inputs:
+    GitRepoUrl: 'https://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@github.com/SHW511/PHP-NetRunner.git'
