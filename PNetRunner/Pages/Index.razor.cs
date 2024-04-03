@@ -17,5 +17,18 @@ namespace PNetRunner.Pages
         {
             Processes = PhpRunner.Processes.MapKnownPhpDirectories();
         }
+
+        /// <summary>
+        /// Stop the current PHP containers and rebuild them.
+        /// </summary>
+        /// <returns></returns>
+        public async Task RemapPhpDirs()
+        {
+            await PhpRunner.StopContainers();
+            await PhpRunner.MapPhpContainersAsync();
+            Processes = PhpRunner.Processes.MapKnownPhpDirectories();
+
+            StateHasChanged();
+        }
     }
 }

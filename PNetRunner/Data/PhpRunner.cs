@@ -27,6 +27,7 @@ namespace PNetRunner.Data
             foreach (var process in Processes)
             {
                 process.Kill();
+                _logger.LogInformation("Killed PHP server on port {port}", process.StartInfo.Arguments.Split(":").Last());
             }
         }
 
@@ -90,6 +91,14 @@ namespace PNetRunner.Data
             }
 
             return await Task.FromResult(true);
+        }
+
+        public async Task StopContainers()
+        {
+            ShutdownListeners();
+            Processes.Clear();
+
+            await Task.CompletedTask;
         }
     }
 }
