@@ -10,6 +10,8 @@ jobs:
     steps:
     - name: Checkout current repository
       uses: actions/checkout@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}  # Ensure checkout uses the GITHUB_TOKEN
 
     - name: Clone target repository to temp directory
       run: git clone https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo
@@ -36,4 +38,6 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git commit -m "Replace repository content with new content"
         git push origin master  # Ensure you're pushing to the correct branch
+    env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set token in environment for git push
 
