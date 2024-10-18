@@ -11,14 +11,14 @@ jobs:
     - name: Checkout current repository
       uses: actions/checkout@v2
 
-    - name: Clone target repository
+    - name: Clone target repository to temp directory
       run: git clone https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo
 
     - name: Remove existing content
       run: git rm -rf . --ignore-unmatch
 
-    - name: Copy new content
-      run: cp -r temp-repo/* .
+    - name: Copy new content, including hidden files
+      run: cp -r temp-repo/. .
 
     - name: Commit and push changes
       run: |
@@ -26,4 +26,4 @@ jobs:
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git commit -m "Replace repository content with new content"
-        git push origin master
+        git push origin master  # Use 'master' if that's your default branch
