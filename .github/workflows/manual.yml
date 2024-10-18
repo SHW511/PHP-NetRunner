@@ -1,0 +1,29 @@
+name: Replace Repo Content
+
+on:
+  workflow_dispatch:
+
+jobs:
+  replace-content:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout current repository
+      uses: actions/checkout@v2
+
+    - name: Clone target repository
+      run: git clone https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo
+
+    - name: Remove existing content
+      run: git rm -rf . --ignore-unmatch
+
+    - name: Copy new content
+      run: cp -r temp-repo/* .
+
+    - name: Commit and push changes
+      run: |
+        git add .
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git commit -m "Replace repository content with new content"
+        git push origin master
