@@ -29,3 +29,12 @@ You can leave the default settings as is, but don't forget to set a proper passw
 ### Optional: MySql Workbench
 If you want to acces your MySql database outside of PhpMyAdmin, you can use MySql Workbench, a professional DB Management tool.
 https://dev.mysql.com/downloads/workbench/ 
+
+# How to use
+No matter where you extracted the PHP Net Runner, creating a new site is easy!
+<ol>
+    <li>Go to wherever you extracted the PHP Net Runner and navigate to the folder named <code>PHP_Content</code> folder.</li>
+    <li>Create a new folder and give it an appropriate name. This folder will act as your new <code>wwwroot</code>/<code>webroot</code>.</i>
+    <li>Paste your website scripts and assets into that folder.</li>
+    <li>On the index page of the PHP Net Runner, press the <code>"Reload PHP directories"</code> button.</li>
+</ol>
