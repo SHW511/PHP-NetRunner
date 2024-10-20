@@ -37,8 +37,8 @@ jobs:
 
     - name: Commit and push changes
       run: |
-        git rm --cached temp-repo
         git add .
+        git rm --cached temp-repo
         git commit -m "Replace repository content with new content"
         git push https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/SHW511/PHP-NetRunner.git master --force
 
