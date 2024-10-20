@@ -31,4 +31,4 @@ jobs:
       run: |
         git add .
         git commit -m "Replace repository content with new content"
-        git push https://x-access-token:${{ secrets.AZURE_SYNC }}@github.com/SHW511/PHP-NetRunner.git master
+        git push https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/SHW511/PHP-NetRunner.git master
