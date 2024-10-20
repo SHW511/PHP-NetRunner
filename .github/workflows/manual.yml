@@ -23,7 +23,7 @@ jobs:
     - name: Configure GitHub authentication
       run: |
         git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
+        git config --global user.email 'SvenWind97@gmail.com'
         git remote remove origin
         git remote add origin https://github.com/SHW511/PHP-NetRunner.git
 
