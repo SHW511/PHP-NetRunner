@@ -21,7 +21,7 @@ jobs:
 
     - name: Copy new content, excluding.github/workflows
       run: |
-        rsync -a --exclude='.github/workflows' temp-repo/..
+        rsync -a --exclude='.github/workflows' temp-repo/ ./
 
     - name: Remove azure-pipelines.yaml files from temp-repo
       run: |
@@ -40,3 +40,7 @@ jobs:
         git add .
         git commit -m "Replace repository content with new content"
         git push https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/SHW511/PHP-NetRunner.git master --force
+
+    - name: Cleanup
+      run: rm -rf temp-repo
+        
