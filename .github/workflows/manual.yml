@@ -38,6 +38,3 @@ jobs:
         git config --global user.email 'github-actions@github.com'
         git commit -m "Replace repository content with new content"
         git push origin master  # Ensure you're pushing to the correct branch
-    env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Set token in environment for git push
-
