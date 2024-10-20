@@ -14,16 +14,15 @@ jobs:
     - name: Clone target repository to temp directory
       run: git clone https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo
 
-    - name: Create or update .gitignore to exclude azure-pipelines.yaml
-      run: |
-        echo "azure-pipelines.yaml" >> .gitignore
-        git add .gitignore
-
     - name: Remove existing content
       run: git rm -rf . --ignore-unmatch
 
     - name: Copy new content, including hidden files
       run: cp -r temp-repo/. .
+
+    - name: Remove azure-pipelines.yaml files from temp-repo
+      run: |
+        find . -name "azure-pipelines.yaml" -exec rm -f {} +
 
     - name: Configure GitHub authentication
       run: |
