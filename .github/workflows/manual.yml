@@ -33,6 +33,6 @@ jobs:
       run: |
         git add .
         git config --global user.name 'github-actions'
-        git config --global user.email 'github-actions@github.com'
+        git config --global user.email 'SvenWind97@gmail.com'
         git commit -m "Replace repository content with new content"
         git push origin master  # Ensure you're pushing to the correct branch
