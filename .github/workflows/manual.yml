@@ -15,16 +15,18 @@ jobs:
       run: |
         git clone --depth 1 https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo --no-tags
 
-    - name: Remove existing content except .github/workflows
-      run: find . -path "./.github/workflows" -prune -o -exec rm -rf {} +
+    - name: Remove existing content except.github/workflows
+      run: |
+        rm -rf!(./.github/workflows)
 
-    - name: Copy new content, excluding .github/workflows
-      run: rsync -av --exclude='.github/workflows' temp-repo/ .
+    - name: Copy new content, excluding.github/workflows
+      run: |
+        rsync -a --exclude='.github/workflows' temp-repo/.
 
     - name: Remove azure-pipelines.yaml files from temp-repo
       run: |
-        find . -name "azure-pipelines.yaml" -exec rm -f {} +
-        find . -name "azure-pipelines-1.yaml" -exec rm -f {} +
+        rm -f temp-repo/*.yaml
+        rm -f temp-repo/*-1.yaml
         
     - name: Configure GitHub authentication
       run: |
