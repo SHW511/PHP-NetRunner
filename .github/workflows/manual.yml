@@ -17,7 +17,7 @@ jobs:
 
     - name: Remove existing content except.github/workflows
       run: |
-        rm -rf!(./.github/workflows)
+        find . -path './.github/workflows' -prune -o -exec rm -rf {} +
 
     - name: Copy new content, excluding.github/workflows
       run: |
