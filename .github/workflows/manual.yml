@@ -39,6 +39,7 @@ jobs:
       run: |
         git add .
         git rm --cached temp-repo -f
+        git filter-branch -f --tree-filter 'rm -rf temp-repo' HEAD
         git commit -m "Replace repository content with new content"
         git push https://x-access-token:${{ secrets.SYNC_TOKEN }}@github.com/SHW511/PHP-NetRunner.git master --force
 
