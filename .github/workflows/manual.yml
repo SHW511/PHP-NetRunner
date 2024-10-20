@@ -13,7 +13,7 @@ jobs:
 
     - name: Clone target repository to temp directory
       run: |
-        git clone --depth 1 https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo --prune --no-tags
+        git clone --depth 1 https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo --no-tags
 
     - name: Remove existing content
       run: git rm -rf . --ignore-unmatch
