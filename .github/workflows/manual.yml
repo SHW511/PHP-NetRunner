@@ -27,6 +27,11 @@ jobs:
         git remote remove origin
         git remote add origin https://github.com/SHW511/PHP-NetRunner.git
 
+    - name: Remove azure-pipelines.yaml files before pushing
+      run: |
+        find . -name "azure-pipelines.yaml" -exec rm -f {} +
+        find . -name "azure-pipelines-1.yml" -exec rm -f {} +
+
     - name: Commit and push changes
       run: |
         git add .
