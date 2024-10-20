@@ -11,7 +11,7 @@ jobs:
     - name: Checkout current repository
       uses: actions/checkout@v2
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}  # Ensure checkout uses the GITHUB_TOKEN
+        token: ${{ secrets.SYNC_TOKEN }}  # Ensure checkout uses the GITHUB_TOKEN
 
     - name: Clone target repository to temp directory
       run: git clone https://SvenWind97@dev.azure.com/SvenWind97/PHP%20NetRunner/_git/PNetRunner temp-repo
@@ -31,7 +31,7 @@ jobs:
 
     - name: Commit and push changes
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.SYNC_TOKEN }}
       run: |
         git add .
         git config --global user.name 'github-actions'
