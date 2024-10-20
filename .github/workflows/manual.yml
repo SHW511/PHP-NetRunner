@@ -28,11 +28,7 @@ jobs:
         git remote add origin https://github.com/SHW511/PHP-NetRunner.git
 
     - name: Commit and push changes
-      env:
-        GITHUB_TOKEN: ${{ secrets.AZURE_SYNC }}
       run: |
         git add .
-        git config --global user.name 'github-actions'
-        git config --global user.email 'SvenWind97@gmail.com'
         git commit -m "Replace repository content with new content"
-        git push origin master  # Ensure you're pushing to the correct branch
+        git push https://x-access-token:${{ secrets.AZURE_SYNC }}@github.com/SHW511/PHP-NetRunner.git master
