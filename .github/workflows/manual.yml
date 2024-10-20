@@ -21,7 +21,7 @@ jobs:
 
     - name: Copy new content, excluding.github/workflows
       run: |
-        rsync -a --exclude='.github/workflows' temp-repo/.
+        rsync -a --exclude='.github/workflows' temp-repo/..
 
     - name: Remove azure-pipelines.yaml files from temp-repo
       run: |
