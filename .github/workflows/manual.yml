@@ -35,9 +35,9 @@ jobs:
         git remote remove origin
         git remote add origin https://github.com/SHW511/PHP-NetRunner.git
 
+        # git rm --cached temp-repo -f
     - name: Commit and push changes
       run: |
-        git rm --cached temp-repo -f
         git filter-branch -f --tree-filter 'rm -rf temp-repo' HEAD
         git add .
         git commit -m "Replace repository content with new content"
