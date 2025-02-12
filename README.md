@@ -46,9 +46,9 @@ This way, you can immediately see any changes you made when reloading the webpag
 
 See the images below as reference below on how to set up your file-structure.
 
-![alt text](docs-assets\image.png)
+![alt text](\docs-assets\image.png)
 
-![alt text](docs-assets\image-2.png)
+![alt text](\docs-assets\image-2.png)
 
 # Bugs
 Got bugs or missing features? Submit a bug-report on GitHub (https://github.com/SHW511/PHP-NetRunner/issues).
