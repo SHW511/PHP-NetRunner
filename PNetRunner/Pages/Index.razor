@@ -1,0 +1,34 @@
+﻿@inherits IndexComponent
+@page "/"
+@using PNetRunner.Ext
+
+<PageTitle>Index</PageTitle>
+<link href="index.razor.css" rel="stylesheet" />
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Url</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var proc in Processes)
+        {
+            <tr>
+                <td>@proc.Item2.Id</td>
+                <td>@proc.Item1</td>
+                <td>
+                    @{
+                        var str = @proc.Item2.StartInfo.Arguments.AsHref(true, "-S", " ");
+                        <a href="@str">@str</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-primary" @onclick="RemapPhpDirs">Reload PHP directories</button>
+<a class="link-primary " @onclick="OpenWebRoot">Open PHP Content directory</a>
